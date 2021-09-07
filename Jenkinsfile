@@ -26,7 +26,7 @@ pipeline {
     VSPHERE_DS_CLUSTER = "MYDC-DEV"
     VSPHERE_SERVER = "my-vmware-cluster.com"
     VSPHERE_USERNAME = "[vcenter_account]"
-    VSPHERE_VLAN = "vlan240" 
+    VSPHERE_VLAN = "vlandev" 
   }
 
   agent {
