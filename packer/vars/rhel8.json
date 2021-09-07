@@ -1,0 +1,14 @@
+{
+  "cluster": "MYDC-DEV",
+  "datacenter": "MYDC",
+  "datastore": "BIG-SAN",
+  "folder":  "/Template",
+  "guest_os_type": "rhel7_64Guest",
+  "iso_checksum": "76bb4125eeb0c0b1dc3ecf0c96339c6a",
+  "iso_checksum_type": "md5",
+  "iso_urls": "http://satellite-server.com/pulp/isos/Default_Organization/Library/content/dist/rhel8/8/x86_64/baseos/iso/rhel-8.2-x86_64-dvd.iso",
+  "notes": "Packer Build",
+  "ssh_user": "[provisioner]",
+  "vm_name": "RHEL8",
+  "vm_user": "[vcenter_account]"
+}

@@ -1,0 +1,71 @@
+{
+  "builders": [
+    {
+      "CPUs": 2,
+      "RAM": 4096,
+      "RAM_reserve_all": true,
+      "boot_command": [
+        "<up><tab>",
+        "<spacebar>inst.text",
+        "<spacebar>ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg",
+        "<enter>"
+      ],
+      "cluster": "{{user `cluster`}}",
+      "convert_to_template": true,
+      "datacenter": "{{user `datacenter`}}",
+      "datastore": "{{user `datastore`}}",
+      "disk_controller_type": "lsilogic",
+      "folder": "{{user `folder`}}",
+      "guest_os_type": "{{user `guest_os_type`}}",
+      "host": "host.my-vmware-cluster.com",
+      "http_directory": "packer/http",
+      "http_port_max": 8090,
+      "http_port_min": 8080,
+      "insecure_connection": "true",
+      "iso_checksum": "{{user `iso_checksum_type`}}:{{user `iso_checksum`}}",
+      "iso_urls": "{{user `iso_urls`}}",
+      "network_adapters": [
+        {
+          "network": "vlandev",
+          "network_card": "vmxnet3"
+        }
+      ],
+      "notes": "{{user `notes`}}",
+      "password": "{{user `vm_pass`}}",
+      "ssh_password": "{{user `ssh_pass`}}",
+      "ssh_username": "{{user `ssh_user`}}",
+      "storage": [
+        {
+          "disk_size": 128000,
+          "disk_thin_provisioned": true
+        }
+      ],
+      "type": "vsphere-iso",
+      "username": "{{user `vm_user`}}",
+      "vcenter_server": "{{user `vcenter_server`}}",
+      "vm_name": "{{user `vm_name`}}",
+      "vm_version": 15
+    }
+  ],
+  "provisioners": [
+    {
+      "execute_command": "{{ .Vars }} sudo -E  -S ksh '{{ .Path }}'",
+      "environment_vars": [ "PROV_PASS={{user `ssh_pass`}}" ],
+      "scripts": [
+        "packer/scripts/register.sh",
+        "packer/scripts/designator.sh",
+        "packer/scripts/bootstrap.sh",
+        "packer/scripts/vmwaretools.sh",
+        "packer/scripts/sleep.sh",
+        "packer/scripts/sanitize.sh"
+      ],
+      "type": "shell"
+    }
+  ],
+  "variables": {
+    "ssh_pass": "{{env `SECRET_USER_PASS`}}",
+    "vcenter_server": "{{env `VCENTER_SERVER`}}",
+    "vm_pass": "{{env `SECRET_VM_PASS`}}"
+  }
+}
+

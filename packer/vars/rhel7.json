@@ -1,0 +1,12 @@
+{
+
+  "folder":  "/Template",
+  "guest_os_type": "rhel7_64Guest",
+  "iso_checksum": "03e744681b67cbfe4c89b9fc7a89f21b",
+  "iso_checksum_type": "md5",
+  "iso_urls": "http://satellite-server.com/pulp/isos/Default_Organization/Library/content/dist/rhel/server/7/7.8/x86_64/iso/rhel-server-7.8-x86_64-dvd.iso",
+  "notes": "Packer Build",
+  "ssh_user": "[provisioner]",
+  "vm_name": "RHEL7",
+  "vm_user": "[vcenter_account]"
+}
