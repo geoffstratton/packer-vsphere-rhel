@@ -14,7 +14,7 @@ Jenkins-driven Packer scripts to build Red Hat 7 and 8 templates in a VMware vSp
 
 License
 -------
-Apache 2.0
+GNU General Public License v3.0
 
 Author Information
 ------------------
